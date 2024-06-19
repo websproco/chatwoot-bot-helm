@@ -26,4 +26,4 @@ spec:
             - name: CHATWOOT_API_KEY
               value: {{ .Values.env.chatwoot_api_key }}
             - name: ACCOUNT_ID
-              value: {{ .Values.env.account_id }}
+              value: {{ .Values.env.account_id | quote }} 
