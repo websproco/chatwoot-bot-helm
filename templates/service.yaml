@@ -4,7 +4,6 @@ metadata:
   name: {{ include "chatwoot-bot.fullname" . }}
   labels:
     app.kubernetes.io/name: {{ include "chatwoot-bot.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -14,4 +13,3 @@ spec:
       name: http
   selector:
     app.kubernetes.io/name: {{ include "chatwoot-bot.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}

@@ -5,19 +5,15 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ include "chatwoot-bot.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/version: {{ .Chart.AppVersion }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replica_count }}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "chatwoot-bot.name" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
         app.kubernetes.io/name: {{ include "chatwoot-bot.name" . }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
         - name: chatwoot-bot
