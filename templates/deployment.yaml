@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "chatwoot-bot.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "chatwoot-bot.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replica_count }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "chatwoot-bot.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "chatwoot-bot.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: chatwoot-bot
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pull_policy }}
+          ports:
+            - containerPort: 80
+          env:
+            - name: CHATWOOT_BASE_URL
+              value: {{ .Values.env.chatwoot_base_url }}
+            - name: CHATWOOT_API_KEY
+              value: {{ .Values.env.chatwoot_api_key }}
+            - name: ACCOUNT_ID
+              value: {{ .Values.env.account_id }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      nodeSelector:
+        {{- toYaml .Values.node_selector | nindent 8 }}
+      tolerations:
+        {{- toYaml .Values.tolerations | nindent 8 }}
+      affinity:
+        {{- toYaml .Values.affinity | nindent 8 }}
