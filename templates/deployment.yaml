@@ -32,11 +32,3 @@ spec:
               value: {{ .Values.env.chatwoot_api_key }}
             - name: ACCOUNT_ID
               value: {{ .Values.env.account_id }}
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-      nodeSelector:
-        {{- toYaml .Values.node_selector | nindent 8 }}
-      tolerations:
-        {{- toYaml .Values.tolerations | nindent 8 }}
-      affinity:
-        {{- toYaml .Values.affinity | nindent 8 }}
