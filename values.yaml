@@ -13,6 +13,11 @@ env:
   chatwoot_base_url: "https://your.chatwoot.instance"
   chatwoot_api_key: "your_chatwoot_api_key"
   account_id: "your_account_id"
+  chatwoot_domain: "your.chatwoot.instance"
+  evolution_api_url: "https://your.evolution.api"
+  evolution_api_token: "your_evolution_api_token"
+  evolution_api_instance: "your_evolution_api_instance"
+
 
 resources: {}
 node_selector: {}

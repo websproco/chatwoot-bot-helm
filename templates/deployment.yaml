@@ -27,3 +27,11 @@ spec:
               value: {{ .Values.env.chatwoot_api_key }}
             - name: ACCOUNT_ID
               value: {{ .Values.env.account_id | quote }} 
+            - name: CHATWOOT_DOMAIN
+              value: {{ .Values.env.chatwoot_domain | quote }}
+            - name: EVOLUTION_API_URL
+              value: {{ .Values.env.evolution_api_url }}
+            - name: EVOLUTION_API_TOKEN
+              value: {{ .Values.env.evolution_api_token }}
+            - name: EVOLUTION_API_INSTANCE
+              value: {{ .Values.env.evolution_api_instance }}              
